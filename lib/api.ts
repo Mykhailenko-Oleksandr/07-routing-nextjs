@@ -9,6 +9,7 @@ interface ResponseAPI {
 interface OptionsAPI {
   params: {
     search: string;
+    tag?: string;
     page: number;
     perPage: number;
   };
@@ -19,10 +20,19 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${
   process.env.NEXT_PUBLIC_NOTEHUB_TOKEN
 }`;
 
-export async function fetchNotes(searchWord: string, page: number) {
+export async function fetchNotes(
+  searchWord: string,
+  page: number,
+  tag?: string
+) {
+  if (tag === "all") {
+    tag = undefined;
+  }
+
   const options: OptionsAPI = {
     params: {
       search: searchWord,
+      tag: tag,
       page: page,
       perPage: 12,
     },

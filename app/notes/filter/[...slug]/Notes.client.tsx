@@ -13,14 +13,18 @@ import { Toaster } from "react-hot-toast";
 import { useDebouncedCallback } from "use-debounce";
 import css from "./NotesPage.module.css";
 
-export default function NotesClient() {
+interface NotesClientProps {
+  category?: string;
+}
+
+export default function NotesClient({ category }: NotesClientProps) {
   const [topic, setTopic] = useState("");
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isError, isSuccess } = useQuery({
-    queryKey: ["notes", topic, page],
-    queryFn: () => fetchNotes(topic, page),
+    queryKey: ["notes", topic, page, category],
+    queryFn: () => fetchNotes(topic, page, category),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
