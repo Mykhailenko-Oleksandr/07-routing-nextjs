@@ -4,11 +4,9 @@ import { useState } from "react";
 import css from "./TagsMenu.module.css";
 import Link from "next/link";
 
-interface TagsMenuProps {
-  tags: string[];
-}
+const tags = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 
-export default function TagsMenu({ tags }: TagsMenuProps) {
+export default function TagsMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -21,7 +19,7 @@ export default function TagsMenu({ tags }: TagsMenuProps) {
         <ul className={css.menuList}>
           <li className={css.menuItem}>
             <Link
-              href={`/notes/filter/all`}
+              href={`/notes/filter/All`}
               className={css.menuLink}
               onClick={toggle}
             >

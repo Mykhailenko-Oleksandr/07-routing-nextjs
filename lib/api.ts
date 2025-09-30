@@ -25,7 +25,7 @@ export async function fetchNotes(
   page: number,
   tag?: string
 ) {
-  if (tag === "all") {
+  if (tag === "All") {
     tag = undefined;
   }
 

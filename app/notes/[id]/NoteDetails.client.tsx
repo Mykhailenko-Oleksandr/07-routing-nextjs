@@ -23,6 +23,7 @@ export default function NoteDetailsClient() {
 
   return (
     <div className={css.container}>
+      <button className={css.backBtn}></button>
       <div className={css.item}>
         <div className={css.header}>
           <h2>{note.title}</h2>
