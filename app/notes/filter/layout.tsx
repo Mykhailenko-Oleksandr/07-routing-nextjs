@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import css from "./LayoutNotes.module.css";
 
 interface NotesLayoutProps {
   children: ReactNode;
@@ -7,9 +8,9 @@ interface NotesLayoutProps {
 
 const NotesLayout = ({ children, sidebar }: NotesLayoutProps) => {
   return (
-    <section>
-      <aside>{sidebar}</aside>
-      <div>{children}</div>
+    <section className={css.container}>
+      <aside className={css.sidebar}>{sidebar}</aside>
+      <div className={css.notesWrapper}>{children}</div>
     </section>
   );
 };
