@@ -6,10 +6,12 @@ import {
 } from "@tanstack/react-query";
 import NotesClient from "./Notes.client";
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string[] }>;
-};
+}
 
+// Prefetch виконується тільки для першої сторінки без пошуку (topic="").
+// На клієнті NotesClient вже сам керує topic та page.
 const topic = "";
 const page = 1;
 
